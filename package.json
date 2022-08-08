@@ -1,0 +1,14 @@
+{
+  "name": "whetherapp",
+  "version": "1.0.0",
+  "description": "Aapi Whether app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sujit Mourya",
+  "license": "ISC",
+  "dependencies": {
+    "requests": "^0.3.0"
+  }
+}

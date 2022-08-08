@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Whether App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            margin: auto;
+            width: 25vw;
+            height: 70vh;
+            text-align: center;
+            border: 2px solid gray;
+            background-color: rgba(121, 183, 207, 0.844);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px 0 rgba(128, 128, 128, 0.392);
+        }
+
+        .city-name {
+            display: flex;
+            flex-direction: column;
+            z-index: 999;
+            justify-items: baseline;
+            align-items: center;
+            position: absolute;
+            top: 52%;
+            left: 25%;
+        }
+
+        .icon {
+            height: 35vh;
+        }
+
+        .min-max {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        .date {
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .wave {
+            z-index: 3;
+            margin: 0 auto;
+            height: 40vh;
+            border-radius: 45%;
+            background-color: cornsilk;
+            animation: roat 10s infinite linear;
+        }
+
+        @keyframes roat {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .wave1 {
+            position: absolute;
+            top: 50%;
+            left: -35%;
+            height: 50vh;
+            width: 50vh;
+
+        }
+
+        .wave2 {
+            position: absolute;
+            top: 50%;
+            height: 50vh;
+            width: 50vh;
+
+        }
+
+        .wave3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 50vh;
+            width: 50vh;
+        }
+
+        #icon {
+            color: rgb(252, 252, 62);
+            margin: 7rem auto;
+            animation: sun 10s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes sun {
+            0% {
+                transform: scale(100%);
+            }
+
+            100% {
+                transform: scale(150%);
+            }
+        }
+
+        h1 {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .street {
+            color: greenyellow;
+            margin: 0 1rem;
+            animation: man 5s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes man {
+            0% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(10%);
+            }
+        }
+        @media(max-width:991px){
+            .container{
+                width: 100vw;
+                height:90vh;
+                font-size: 2.5rem;
+            }
+            .date{
+                font-size: 2rem;
+            }
+            .teperature{
+                font-size: 1.5rem; 
+            }
+            #icon{
+                margin-top: 5rem;
+            }
+      
+        }
+
+        @media(max-width:769px){
+            body{
+                position: relative;
+            }
+            .container{
+                width: 100vw;
+                height:100vh;
+                font-size: 1.5rem;
+            }
+            .date{
+                font-size: 1rem;
+            }
+            .teperature{
+                font-size: 0.5rem; 
+            }
+            #icon{
+                 margin: 7rem;
+            }
+            .street{
+                font-size: 2rem;
+            }
+            .wave1 {
+            position: absolute;
+            top: 55%;
+            left: -35%;
+            height: 50vh;
+            width: 50vh;
+
+        }
+
+        .wave2 {
+            position: absolute;
+            top: 55%;
+            height: 50vh;
+            width: 50vh;
+
+        }
+
+        .wave3 {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            height: 50vh;
+            width: 50vh;
+        }
+        .city-name {
+            display: flex;
+            flex-direction: column;
+            z-index: 999;
+            justify-items: baseline;
+            align-items: center;
+            position: absolute;
+            top: 56%;
+            left: 18%;
+        }
+        .temperature{
+            margin: 0rem;
+            padding: 0rem;
+        }
+        .min-max{
+            margin-top: -1.5em;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="icon"  ><i class="fa-solid fa-cloud-rain fa-5x" ></i></div>
+        <div class="wave wave1"></div>
+        <div class="wave wave2 "></div>
+        <div class="wave wave3"></div>
+        <div class="city-name">
+            <h1><i class="fa-solid fa-2x fa-street-view street" ></i>{%location%}</h1>
+
+            <div class="date" id="date">
+                Thu | AUG 04 | 7:15 PM
+            </div>
+            <div class="temperature">
+                <h1>{%tempval%} ℉</h1>
+                <div class="min-max">
+                    <p>{%tempmin%} ℉ |</p>
+                    <p>| {%tempmax%} ℉</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let date =document.getElementById('date');
+        let minmax=document.getElementsByClassName('min-max');
+        let icon=document.getElementById('icon');
+        let temperature=document.getElementById('temperature');
+        
+        const tempstatus="{%tempstatus%}";
+        console.log(tempstatus);
+        if(tempstatus=='Sunny'){
+            icon.innerHTML="<i class='fa-solid fa-sun fa-5x'></i>";
+        }
+        else if(tempstatus=='Clouds'){
+            icon.innerHTML="<i class='fa-solid fa-cloud fa-5x'  style='color:#fff'></i>";
+        }
+        else if(tempstatus=='Rain' || tempstatus=='Thunderstorm'){
+            icon.innerHTML="<i class='fa-solid fa-cloud-rain fa-5x'  style='color:#747d8c'></i>";
+        }
+        else if(tempstatus=='Clouds'){
+            icon.innerHTML="<i class='fa-solid fa-cloud fa-5x'  style='color:#44c3de'></i>";
+        }
+        else{
+            icon.innerHTML="<i class='fa-solid fa-cloud fa-5x'  style='color:#778beb'></i>"
+        }
+        function getdate () {
+            let dayarray =["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+            let day=new Date().getDay();
+           
+            let monthArray=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+            let Month=new Date().getMonth();
+            let MonVal=monthArray[Month];
+            let DayVal=dayarray[day];
+            let tarik=new Date().getDate(); 
+            if(tarik<10){
+                tarik="0"+tarik; 
+            }
+            return `${DayVal} ||  ${MonVal} ${tarik}  |` ;
+        }
+        function getTime(){
+            
+            let hours=new Date().getHours();
+            let periods='AM';
+            if(hours>12){
+                if(hours>11){
+                periods="PM";
+            }
+                hours=hours-12;  
+            }
+            if(hours<10 ){
+                hours="0" +hours;
+            }
+            
+           
+
+            
+            
+            let minutes=new Date().getMinutes();
+            if(minutes <10){
+                minutes="0"+ minutes;
+            }
+            return `${hours} : ${minutes} ${periods}`;
+
+        }
+        date.innerHTML=`${getdate()}| ${getTime()}`;
+    </script>
+</body>
+
+</html>
